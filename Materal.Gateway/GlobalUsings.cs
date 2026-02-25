@@ -1,13 +1,3 @@
 global using Materal.Gateway.Abstractions;
-global using Materal.Gateway.Abstractions.Configs;
-global using Materal.Utils.Extensions;
-global using Materal.Utils.Helpers;
-global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
-global using Microsoft.Extensions.Logging;
-global using Microsoft.Extensions.Options;
-global using System.Text.Encodings.Web;
-global using System.Text.Json;
-global using System.Text.Json.Serialization;
 global using Yarp.ReverseProxy.Configuration;
-global using Yarp.ReverseProxy.Forwarder;

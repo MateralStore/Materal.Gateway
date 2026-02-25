@@ -1,5 +1,4 @@
-﻿using Materal.Gateway.Consul.Extensions;
-using Materal.Gateway.Extensions;
+﻿using Materal.Gateway.Extensions;
 
 namespace Materal.Gateway.Application;
 
@@ -15,12 +14,7 @@ public partial class GatewayModule() : MergeBlockModule("网关模块")
     /// <returns></returns>
     public override void OnConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddConsulGateway(option =>
-        {
-            option.Configuration = context.Configuration;
-            string rootPath = typeof(GatewayModule).Assembly.GetDirectoryPath() ?? AppDomain.CurrentDomain.BaseDirectory;
-            option.ConfigFilePath = Path.Combine(rootPath, "GatewayConfig.json");
-        });
+        context.Services.AddGateway();
     }
     /// <summary>
     /// 应用程序初始化
