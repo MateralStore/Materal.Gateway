@@ -1,25 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="../MergeBlockApplicationLibrary.props" />
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFramework>net10.0</TargetFramework>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Kros.Utils" />
 		<PackageReference Include="Materal.MergeBlock.Abstractions" />
 		<PackageReference Include="Materal.MergeBlock.Authorization.Abstractions" />
 		<PackageReference Include="Materal.MergeBlock.Web.Abstractions" />
-		<PackageReference Include="MMLib.SwaggerForOcelot" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Materal.Gateway\Materal.Gateway.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Update="GatewayManagement\**">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Ocelot.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 	</ItemGroup>
 </Project>
