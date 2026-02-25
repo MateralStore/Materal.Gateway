@@ -9,7 +9,6 @@
 	  <PackageReference Include="Materal.MergeBlock.Cors" />
 	  <PackageReference Include="Materal.MergeBlock.ExceptionInterceptor" />
 	  <PackageReference Include="Materal.MergeBlock.Logger" />
-	  <PackageReference Include="Materal.MergeBlock.Swagger" />
 	  <PackageReference Include="Materal.MergeBlock.Web" />
 	</ItemGroup>
 	<ItemGroup>

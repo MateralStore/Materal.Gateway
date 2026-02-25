@@ -18,7 +18,11 @@ public static partial class IServiceCollectionExtensions
     {
         service.AddHttpContextAccessor();
         IReverseProxyBuilder reverseProxyBuilder = service.AddReverseProxy();
-        service.AddSingleton<IProxyConfigProvider, ConsulIProxyConfigProvider>();
+        //service.AddSingleton<ConsulIProxyConfigProvider>();
+        //service.AddSingleton<IProxyConfigProvider, ConsulIProxyConfigProvider>();
+        service.AddSingleton<ConsulIProxyConfigProvider>();
+        service.AddSingleton((Func<IServiceProvider, IProxyConfigProvider>)((IServiceProvider s) => s.GetRequiredService<ConsulIProxyConfigProvider>()));
+        service.AddHostedService<ConsulIProxyConfigHostedService>();
         GatewayOptions option = new();
         if (options != null)
         {

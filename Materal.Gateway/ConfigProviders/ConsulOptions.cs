@@ -1,9 +1,12 @@
+using Materal.MergeBlock.Abstractions;
+
 namespace Materal.Gateway.ConfigProviders;
 
 /// <summary>
-/// Consul配置选项
+/// Consul配置
 /// </summary>
-public class ConsulOptions
+[Options("Consul")]
+public class ConsulOptions : IOptions
 {
     /// <summary>
     /// 主机地址
