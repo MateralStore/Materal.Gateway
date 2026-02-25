@@ -1,4 +1,4 @@
-﻿namespace Materal.Gateway;
+﻿namespace Materal.Gateway.Abstractions;
 
 /// <summary>
 /// 网关异常

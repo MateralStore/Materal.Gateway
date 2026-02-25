@@ -9,7 +9,8 @@
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Materal.Abstractions" />
+	  <PackageReference Include="Consul" />
+	  <PackageReference Include="Yarp.ReverseProxy" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Materal.Gateway.Abstractions\Materal.Gateway.Abstractions.csproj" />
