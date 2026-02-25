@@ -7,14 +7,6 @@ namespace Materal.Gateway.Extensions;
 /// </summary>
 public static partial class IServiceCollectionExtensions
 {
-    ///// <summary>
-    ///// 添加网关
-    ///// </summary>
-    ///// <param name="service"></param>
-    ///// <param name="options"></param>
-    ///// <returns></returns>
-    //public static IServiceCollection AddGateway(this IServiceCollection service, Action<GatewayOptions> options)
-    //    => service.AddGateway<GatewayHost>(options);
     /// <summary>
     /// 添加网关
     /// </summary>
@@ -26,9 +18,7 @@ public static partial class IServiceCollectionExtensions
     {
         service.AddHttpContextAccessor();
         IReverseProxyBuilder reverseProxyBuilder = service.AddReverseProxy();
-        ConsulIProxyConfigProvider provider = new();
-        service.AddSingleton<IProxyConfigProvider>(provider);
-        //service.AddSingleton(provider);
+        service.AddSingleton<IProxyConfigProvider, ConsulIProxyConfigProvider>();
         GatewayOptions option = new();
         if (options != null)
         {

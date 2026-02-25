@@ -13,7 +13,7 @@ public class GatewayProxyConfig : IProxyConfig
     /// </summary>
     public IReadOnlyList<RouteConfig> Routes { get; }
     /// <summary>
-    /// 路由映射
+    /// 集群映射
     /// </summary>
     public IReadOnlyList<ClusterConfig> Clusters { get; }
     /// <summary>
