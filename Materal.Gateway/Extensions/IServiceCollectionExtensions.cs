@@ -1,4 +1,5 @@
 using Materal.Gateway.ConfigProviders;
+using Microsoft.Extensions.Configuration;
 
 namespace Materal.Gateway.Extensions;
 
@@ -11,18 +12,18 @@ public static partial class IServiceCollectionExtensions
     /// 添加网关
     /// </summary>
     /// <param name="service"></param>
+    /// <param name="configuration"></param>
     /// <param name="options"></param>
     /// <returns></returns>
-    /// <exception cref="GatewayException"></exception>
-    public static IServiceCollection AddGateway(this IServiceCollection service, Action<GatewayOptions>? options = null)
+    public static IServiceCollection AddGateway(this IServiceCollection service, IConfiguration? configuration, Action<GatewayOptions>? options = null)
     {
+        if (configuration is null) throw new ArgumentNullException(nameof(configuration));
         service.AddHttpContextAccessor();
         IReverseProxyBuilder reverseProxyBuilder = service.AddReverseProxy();
-        //service.AddSingleton<ConsulIProxyConfigProvider>();
-        //service.AddSingleton<IProxyConfigProvider, ConsulIProxyConfigProvider>();
         service.AddSingleton<ConsulIProxyConfigProvider>();
         service.AddSingleton((Func<IServiceProvider, IProxyConfigProvider>)((IServiceProvider s) => s.GetRequiredService<ConsulIProxyConfigProvider>()));
         service.AddHostedService<ConsulIProxyConfigHostedService>();
+        service.Configure<ConsulOptions>(configuration.GetSection("Consul"));
         GatewayOptions option = new();
         if (options != null)
         {

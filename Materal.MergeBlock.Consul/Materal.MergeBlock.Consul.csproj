@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="../MergeBlockApplicationLibrary.props" />
+	<Import Project="../MergeBlockLibrary.props" />
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
 		<Title>Materal MergeBlock包</Title>

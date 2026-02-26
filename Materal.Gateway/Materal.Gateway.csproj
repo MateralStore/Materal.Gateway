@@ -12,7 +12,4 @@
 	  <PackageReference Include="Consul" />
 	  <PackageReference Include="Yarp.ReverseProxy" />
 	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Materal.Gateway.Abstractions\Materal.Gateway.Abstractions.csproj" />
-	</ItemGroup>
 </Project>

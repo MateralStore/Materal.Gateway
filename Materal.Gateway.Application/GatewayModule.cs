@@ -14,7 +14,7 @@ public partial class GatewayModule() : MergeBlockModule("网关模块")
     /// <returns></returns>
     public override void OnConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddGateway();
+        context.Services.AddGateway(context.Configuration);
     }
     /// <summary>
     /// 应用程序初始化
