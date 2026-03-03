@@ -5,7 +5,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="Materal.MergeBlock.AccessLog" />
-	  <PackageReference Include="Materal.MergeBlock.Authorization" />
 	  <PackageReference Include="Materal.MergeBlock.Cors" />
 	  <PackageReference Include="Materal.MergeBlock.ExceptionInterceptor" />
 	  <PackageReference Include="Materal.MergeBlock.Logger" />
