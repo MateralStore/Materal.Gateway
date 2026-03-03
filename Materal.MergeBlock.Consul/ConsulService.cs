@@ -38,6 +38,7 @@ public class ConsulService(IOptionsMonitor<ConsulOptions> options, ConsulService
         {
             serviceUrl = new(options.CurrentValue.ServiceHost);
         }
+        serviceUrl = new(serviceUrl.AbsoluteUri.Replace("0.0.0.0", "127.0.0.1"));
         #endregion
         #region Ω°øµºÏ≤ÈUri
         Uri healthUri;
@@ -50,6 +51,7 @@ public class ConsulService(IOptionsMonitor<ConsulOptions> options, ConsulService
             healthUri = new(options.CurrentValue.HealthHost);
         }
         healthUri = new(healthUri, $"/api/Health?id={data.ServiceIDText}");
+        healthUri = new(healthUri.AbsoluteUri.Replace("0.0.0.0", "127.0.0.1"));
         #endregion
         Dictionary<string, string> metaData = new()
         {
