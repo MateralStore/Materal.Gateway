@@ -24,20 +24,6 @@ jobs:
       - name: 构建项目
         run: dotnet build Materal.Gateway.slnx -c Release --no-restore
 
-      - name: 打包
-        run: |
-          projects=(
-            "Materal.MergeBlock.Consul/Materal.MergeBlock.Consul.csproj"
-            "Materal.Gateway.Abstractions/Materal.Gateway.Abstractions.csproj"
-            "Materal.Gateway.Application/Materal.Gateway.Application.csproj"
-          )
-          for project in "${projects[@]}"; do
-            if [ -f "$project" ]; then
-              echo "正在打包: $project"
-              dotnet pack "$project" -c Release --no-build -p:PackageOutputPath=./Packages
-            fi
-          done
-
       - name: 发布到 NuGet
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
