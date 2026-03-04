@@ -53,15 +53,20 @@ public class ConsulService(IOptionsMonitor<ConsulOptions> options, ConsulService
         healthUri = new(healthUri, $"/api/Health?id={data.ServiceIDText}");
         healthUri = new(healthUri.AbsoluteUri.Replace("0.0.0.0", "127.0.0.1"));
         #endregion
-        Dictionary<string, string> metaData = new()
+        Dictionary<string, string> metaDatas = [];
+        foreach (MetaData metaData in options.CurrentValue.MetaData)
         {
-            ["ServiceUrl"] = serviceUrl.AbsoluteUri
-        };
+            metaDatas.TryAdd(metaData.Key, metaData.Value);
+        }
+        metaDatas.TryAdd("ID", data.ServiceIDText);
+        metaDatas.TryAdd("Name", options.CurrentValue.Name);
+        metaDatas.TryAdd("ServiceUrl", serviceUrl.AbsoluteUri);
+        metaDatas.TryAdd("HealthUrl", healthUri.AbsoluteUri);
         return new()
         {
             ID = data.ServiceIDText,
             Name = options.CurrentValue.Name,
-            Meta = metaData,
+            Meta = metaDatas,
             Address = serviceUrl.Host,
             Port = serviceUrl.Port,
             Tags = [.. options.CurrentValue.Tags],

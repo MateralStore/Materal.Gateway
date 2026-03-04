@@ -40,4 +40,9 @@ public class ConsulOptions : IOptions
     /// 服务主机
     /// </summary>
     public string? ServiceHost { get; set; }
+
+    /// <summary>
+    /// 元数据
+    /// </summary>
+    public List<MetaData> MetaData { get; set; } = [];
 }
