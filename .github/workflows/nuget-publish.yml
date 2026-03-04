@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: 设置 .NET 环境
         uses: actions/setup-dotnet@v4
@@ -27,6 +29,10 @@ jobs:
       - name: 发布到 NuGet
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
+          echo "当前工作目录: $(pwd)"
+          echo "Packages 目录内容:"
+          ls -la Packages/ 2>/dev/null || echo "Packages 目录不存在"
+          echo "---"
           if [ -z "$(ls -A Packages/*.nupkg 2>/dev/null)" ]; then
             echo "没有需要发布的包"
             exit 0
