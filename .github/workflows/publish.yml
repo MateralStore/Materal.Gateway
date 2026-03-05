@@ -82,11 +82,17 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: 调试 - 检查 API Key
+        run: |
+          echo "API_KEY 是否存在: ${{ secrets.NUGET_API_KEY != '' }}"
+          echo "API_KEY 长度: ${{ secrets.NUGET_API_KEY.length }}"
+
       - name: 发布到 NuGet
         run: |
           # 检查 API Key 是否合法
           API_KEY="${{ secrets.NUGET_API_KEY }}"
-          if [[ "$API_KEY" != "oy2m3ixquwtafw7ms7pabi4enu6uwemerfzzvsei46qekm" && ! "$API_KEY" =~ ^oy2m.*qekm$ ]]; then
+          echo "API_KEY 值: $API_KEY"
+          if [[ ! "$API_KEY" =~ ^oy2m.*qekm$ ]]; then
             echo "API Key 不合法，跳过发布"
             exit 0
           fi
