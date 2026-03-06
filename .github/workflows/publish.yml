@@ -28,10 +28,13 @@ jobs:
       - name: 还原 NuGet 包
         run: dotnet restore Materal.Gateway.slnx
 
+      - name: 构建项目
+        run: dotnet build Materal.Gateway.slnx --configuration Release
+
       - name: 打包 NuGet 包
         run: |
-          dotnet pack Materal.MergeBlock.Consul/Materal.MergeBlock.Consul.csproj --configuration Release
-          dotnet pack Materal.Gateway/Materal.Gateway.csproj --configuration Release
+          dotnet pack Materal.MergeBlock.Consul/Materal.MergeBlock.Consul.csproj --configuration Release --no-build
+          dotnet pack Materal.Gateway/Materal.Gateway.csproj --configuration Release --no-build
 
       - name: 发布后端项目
         run: dotnet publish Materal.Gateway.WebAPI/Materal.Gateway.WebAPI.csproj --configuration Release --output Application/Materal.Gateway.WebAPI
